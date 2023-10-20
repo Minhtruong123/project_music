@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,11 @@ public class RestSongController extends AbstractController{
     }
     @PostMapping("/song")
     public ResponseEntity<?> addSong(@RequestBody SongDTO songDTO){
+        songService.addSong(songDTO);
+        return noContent();
+    }
+    @PutMapping("/song")
+    public ResponseEntity<?> editSong(@RequestBody SongDTO songDTO){
         songService.addSong(songDTO);
         return noContent();
     }
